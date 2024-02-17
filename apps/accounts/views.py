@@ -1,4 +1,4 @@
-from rest_framework import permissions, status
+from rest_framework import permissions, status, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -32,3 +32,12 @@ class RegisterView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+class UserSerializer:
+    pass
+
+
+class SellerListAPIView(generics.ListAPIView):
+    permission_classes = [permissions.AllowAny]
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
