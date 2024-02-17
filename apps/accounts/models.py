@@ -1,5 +1,5 @@
 from django.db import models
-from .managers import CustomUserManager
+from .managers import CustomUserManagers
 
 
 class MyUser(models.Model):
@@ -18,7 +18,7 @@ class MyUser(models.Model):
     REQUIRED_FIELDS = []
 
 
-    objects = CustomUserManager()
+    objects = CustomUserManagers()
 
     def __str__(self):
         return self.email
